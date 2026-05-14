@@ -120,7 +120,7 @@ export default function HeroSection({
               </div>
               {showHeroCertificationBadge && (
                 <div
-                  className="pointer-events-none absolute z-20 h-[clamp(6.75rem,32vw,12rem)] w-[clamp(6.75rem,32vw,12rem)] -right-11 -top-11 sm:-right-16 sm:-top-16 lg:-right-32 lg:-top-32 drop-shadow-[0_8px_28px_rgba(0,0,0,0.55)] ring-2 ring-white/95 rounded-lg"
+                  className="pointer-events-none absolute right-0 top-0 z-20 h-[clamp(6.75rem,32vw,12rem)] w-[clamp(6.75rem,32vw,12rem)] translate-x-1/2 -translate-y-1/2 drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)]"
                 >
                   <Image
                     src={BRAND_ASSETS.maafCertificationBadge}
