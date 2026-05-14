@@ -2,7 +2,7 @@ export const CONTACT = {
   phone: "+33 1 43 43 87 11",
   phoneDisplay: "01 43 43 87 11",
   phoneHref: "tel:+33143438711",
-  email: "contact@brunisanitaire.fr",
+  email: "brunisanitaire@gmail.com",
   address: "125 rue de Picpus",
   city: "75012 Paris",
   /** Affichage court (footer, etc.) — aligné fiche Google */

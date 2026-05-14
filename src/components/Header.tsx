@@ -68,17 +68,17 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Phone CTA desktop */}
+          {/* Phone CTA desktop — numéro affiché seul (non cliquable), appel via le bouton */}
           <div className="hidden lg:flex items-center gap-4">
+            <span
+              className="text-right text-blue-900 font-bold text-lg -mt-1 block select-text cursor-default"
+              aria-label={`Numéro affiché : ${CONTACT.phoneDisplay}. Utilisez le bouton « Appeler maintenant » pour composer l’appel.`}
+            >
+              {CONTACT.phoneDisplay}
+            </span>
             <a
               href={CONTACT.phoneHref}
               aria-label={`Appeler Bruni Sanitaire au ${CONTACT.phoneDisplay}`}
-              className="text-right text-blue-900 font-bold text-lg -mt-1 block select-text hover:text-red-700 transition-colors"
-            >
-              {CONTACT.phoneDisplay}
-            </a>
-            <a
-              href={CONTACT.phoneHref}
               className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-3 rounded-lg transition-all duration-200 hover:shadow-lg active:scale-95"
             >
               <Phone className="h-4 w-4" />
@@ -86,15 +86,21 @@ export default function Header() {
             </a>
           </div>
 
-          {/* Mobile: phone number + hamburger */}
-          <div className="flex items-center gap-3 lg:hidden">
+          {/* Mobile : numéro visible (non cliquable) + bouton d’appel */}
+          <div className="flex items-center gap-2 min-[400px]:gap-3 lg:hidden">
+            <span
+              className="font-bold tabular-nums text-blue-900 text-xs min-[400px]:text-sm shrink-0 max-w-[9.5rem] min-[400px]:max-w-none truncate min-[400px]:truncate-none"
+              aria-label={`Numéro affiché : ${CONTACT.phoneDisplay}`}
+            >
+              {CONTACT.phoneDisplay}
+            </span>
             <a
               href={CONTACT.phoneHref}
-              className="flex items-center gap-2 bg-red-600 text-white font-bold px-3 py-2 rounded-lg text-sm"
+              aria-label={`Appeler le ${CONTACT.phoneDisplay}`}
+              className="flex shrink-0 items-center gap-2 bg-red-600 text-white font-bold px-3 py-2 rounded-lg text-sm"
             >
               <Phone className="h-4 w-4" />
-              <span className="hidden sm:inline">{CONTACT.phoneDisplay}</span>
-              <span className="sm:hidden">Appeler</span>
+              <span>Appeler</span>
             </a>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -135,13 +141,15 @@ export default function Header() {
                   </Link>
                 );
               })}
-              <div className="pt-3 border-t border-gray-100">
+              <div className="pt-3 border-t border-gray-100 space-y-3">
+                <p className="text-center text-blue-900 font-bold text-lg tabular-nums">{CONTACT.phoneDisplay}</p>
                 <a
                   href={CONTACT.phoneHref}
+                  aria-label={`Appeler le ${CONTACT.phoneDisplay}`}
                   className="flex items-center justify-center gap-2 bg-red-600 text-white font-bold py-4 rounded-lg text-lg"
                 >
                   <Phone className="h-5 w-5" />
-                  {CONTACT.phoneDisplay}
+                  Appeler maintenant
                 </a>
               </div>
             </div>
