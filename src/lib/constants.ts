@@ -9,6 +9,13 @@ export const CONTACT = {
   hours: "Lun–ven 7h30–20h · Sam 8h–18h · Dim 10h–18h",
 }
 
+/** Widget chat Causio (remplace l’ancien bouton d’appel flottant). */
+export const CAUSIO = {
+  chatbotId: "da287abe-fdf3-46ac-b44a-34986ebe303f",
+  scriptSrc:
+    "https://causio.fr/widget.js?v=dpl_5TjB3qmwNMVDuQvUn2z1atU1rrEs",
+} as const;
+
 /** Zone d’intervention déclarée (UI, FAQ, JSON-LD, cohérence éditoriale). */
 export const SERVICE_AREA = {
   /** Une phrase pour les textes courants */

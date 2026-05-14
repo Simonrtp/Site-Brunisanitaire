@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import PhoneButton from "@/components/PhoneButton";
+import CausioWidget from "@/components/CausioWidget";
 import MainWithScrollDecor from "@/components/MainWithScrollDecor";
 import JsonLd from "@/components/JsonLd";
 import { BRAND_ASSETS, COMPANY, CONTACT, SERVICE_AREA } from "@/lib/constants";
@@ -67,7 +67,7 @@ export default function RootLayout({
         <Header />
         <MainWithScrollDecor>{children}</MainWithScrollDecor>
         <Footer />
-        <PhoneButton />
+        <CausioWidget />
       </body>
     </html>
   );
