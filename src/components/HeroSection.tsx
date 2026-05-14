@@ -120,16 +120,31 @@ export default function HeroSection({
               </div>
               {showHeroCertificationBadge && (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ ...springView, delay: 0.35 }}
-                  className="pointer-events-none absolute z-20 h-[clamp(5.5rem,26vw,9.5rem)] w-[clamp(5.5rem,26vw,9.5rem)] -right-4 -top-4 sm:-right-6 sm:-top-6 lg:-right-9 lg:-top-9 drop-shadow-[0_4px_18px_rgba(0,0,0,0.42)]"
+                  initial={{ opacity: 0, scale: 0.88 }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    rotate: reduce ? -7 : [0, 8, -8, 0],
+                  }}
+                  transition={{
+                    opacity: { ...springView, delay: 0.35 },
+                    scale: { ...springView, delay: 0.35 },
+                    rotate: reduce
+                      ? { duration: 0.35, delay: 0.35 }
+                      : {
+                          delay: 0.55,
+                          duration: 5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        },
+                  }}
+                  className="pointer-events-none absolute z-20 h-[clamp(6.75rem,32vw,12rem)] w-[clamp(6.75rem,32vw,12rem)] -right-7 -top-7 sm:-right-10 sm:-top-10 lg:-right-16 lg:-top-16 drop-shadow-[0_8px_28px_rgba(0,0,0,0.55)] ring-2 ring-white/95 rounded-lg"
                 >
                   <Image
                     src={BRAND_ASSETS.maafCertificationBadge}
                     alt={BRAND_ASSETS.maafCertificationBadgeAlt}
                     fill
-                    sizes="(max-width: 1024px) 128px, 160px"
+                    sizes="(max-width: 1024px) 160px, 200px"
                     className="object-contain"
                     priority={imagePriority}
                   />
