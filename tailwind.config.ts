@@ -13,10 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       animation: {
-        /** Avis : vitesse desktop */
         marquee: "marquee-scroll 22s linear infinite",
-        /** Avis : plus rapide sur téléphone (même keyframe, durée réduite) */
-        "marquee-mobile": "marquee-scroll 9s linear infinite",
       },
       keyframes: {
         "marquee-scroll": {
