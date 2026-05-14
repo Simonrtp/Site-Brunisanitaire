@@ -119,26 +119,8 @@ export default function HeroSection({
                 />
               </div>
               {showHeroCertificationBadge && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.88 }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    rotate: reduce ? -7 : [0, 8, -8, 0],
-                  }}
-                  transition={{
-                    opacity: { ...springView, delay: 0.35 },
-                    scale: { ...springView, delay: 0.35 },
-                    rotate: reduce
-                      ? { duration: 0.35, delay: 0.35 }
-                      : {
-                          delay: 0.55,
-                          duration: 5,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        },
-                  }}
-                  className="pointer-events-none absolute z-20 h-[clamp(6.75rem,32vw,12rem)] w-[clamp(6.75rem,32vw,12rem)] -right-7 -top-7 sm:-right-10 sm:-top-10 lg:-right-16 lg:-top-16 drop-shadow-[0_8px_28px_rgba(0,0,0,0.55)] ring-2 ring-white/95 rounded-lg"
+                <div
+                  className="pointer-events-none absolute z-20 h-[clamp(6.75rem,32vw,12rem)] w-[clamp(6.75rem,32vw,12rem)] -right-11 -top-11 sm:-right-16 sm:-top-16 lg:-right-32 lg:-top-32 drop-shadow-[0_8px_28px_rgba(0,0,0,0.55)] ring-2 ring-white/95 rounded-lg"
                 >
                   <Image
                     src={BRAND_ASSETS.maafCertificationBadge}
@@ -148,7 +130,7 @@ export default function HeroSection({
                     className="object-contain"
                     priority={imagePriority}
                   />
-                </motion.div>
+                </div>
               )}
             </motion.div>
             {/* Floating badge */}
