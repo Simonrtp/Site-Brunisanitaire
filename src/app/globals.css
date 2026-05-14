@@ -2,26 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  scroll-behavior: smooth;
+  /* Même base que le fond page — header en haut pour fusion sans transparence */
+  --site-canvas-base: #eef6ff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Fond clair unifié (toutes les pages) : dégradé type hero + halos bleutés */
+.site-canvas {
+  @apply text-gray-800 antialiased;
+  background-color: var(--site-canvas-base);
+  background-image:
+    radial-gradient(ellipse 110% 90% at 0% -15%, rgb(191 219 254 / 0.55), transparent 58%),
+    radial-gradient(ellipse 95% 75% at 100% -8%, rgb(199 210 254 / 0.38), transparent 52%),
+    radial-gradient(ellipse 75% 50% at 50% 105%, rgb(224 242 254 / 0.5), transparent 58%),
+    linear-gradient(165deg, #eff6ff 0%, #fbfdff 42%, #f1f5f9 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+body.site-canvas {
+  min-height: 100vh;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* ── Marquee fade edges ───────────────────────────── */
+.marquee-track {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
 }
