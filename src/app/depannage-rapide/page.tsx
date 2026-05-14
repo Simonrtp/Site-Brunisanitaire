@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import DepannageContent from "@/components/pages/DepannageContent";
 import { COMPANY, CONTACT, SERVICE_AREA } from "@/lib/constants";
+import { siteIconsMetadata } from "@/lib/siteIcons";
 import { getAbsoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
+  icons: siteIconsMetadata,
   title: "Plombier urgence Paris 12 — fuite & débouchage",
   description: `Dépannage plomberie urgence : fuite d’eau, canalisation bouchée, WC, pression. ${SERVICE_AREA.phrase}. ${CONTACT.hours}. Camion équipé — 01 43 43 87 11, devis gratuit.`,
   keywords: [

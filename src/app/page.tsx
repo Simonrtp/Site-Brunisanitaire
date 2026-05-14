@@ -3,9 +3,11 @@ import HomeBottomSections from "@/components/HomeBottomSections";
 import HomeContent from "@/components/pages/HomeContent";
 import JsonLd from "@/components/JsonLd";
 import { COMPANY, CONTACT, SERVICE_AREA } from "@/lib/constants";
+import { siteIconsMetadata } from "@/lib/siteIcons";
 import { getAbsoluteUrl, getFaqPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
+  icons: siteIconsMetadata,
   title: `Plombier Paris 12e — Urgence & dépannage`,
   description: `Plombier à Paris 12e : urgence, fuite d’eau, débouchage, chauffe-eau, syndics. ${SERVICE_AREA.phrase}. ${CONTACT.hours}. Devis gratuit. 01 43 43 87 11 — artisan assuré MAAF.`,
   keywords: [

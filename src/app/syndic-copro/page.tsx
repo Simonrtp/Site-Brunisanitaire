@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import SyndicContent from "@/components/pages/SyndicContent";
 import { COMPANY, CONTACT, SERVICE_AREA } from "@/lib/constants";
+import { siteIconsMetadata } from "@/lib/siteIcons";
 import { getAbsoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
+  icons: siteIconsMetadata,
   title: "Plombier syndic Paris 12 — copropriété & parties communes",
   description: `Plombier pour syndics : colonnes montantes, parties communes, urgences. ${SERVICE_AREA.phrase}. ${CONTACT.hours}. Devis détaillés, compte-rendu. 01 43 43 87 11 — Bruni Sanitaire.`,
   keywords: [

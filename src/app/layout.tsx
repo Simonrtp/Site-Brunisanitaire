@@ -7,6 +7,7 @@ import PhoneButton from "@/components/PhoneButton";
 import MainWithScrollDecor from "@/components/MainWithScrollDecor";
 import JsonLd from "@/components/JsonLd";
 import { BRAND_ASSETS, COMPANY, CONTACT, SERVICE_AREA } from "@/lib/constants";
+import { siteIconsMetadata } from "@/lib/siteIcons";
 import { getAbsoluteUrl, getPlumberJsonLd, getSiteUrl } from "@/lib/seo";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -36,11 +37,7 @@ export const metadata: Metadata = {
     "Bruni Sanitaire",
   ],
   robots: { index: true, follow: true },
-  icons: {
-    icon: [{ url: BRAND_ASSETS.favicon, type: "image/png" }],
-    apple: [{ url: BRAND_ASSETS.favicon, sizes: "180x180", type: "image/png" }],
-    shortcut: BRAND_ASSETS.favicon,
-  },
+  icons: siteIconsMetadata,
   openGraph: {
     type: "website",
     locale: "fr_FR",

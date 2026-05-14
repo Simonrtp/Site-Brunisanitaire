@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import ChauffeEauxContent from "@/components/pages/ChauffeEauxContent";
 import { COMPANY, SERVICE_AREA } from "@/lib/constants";
+import { siteIconsMetadata } from "@/lib/siteIcons";
 import { getAbsoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
+  icons: siteIconsMetadata,
   title: "Chauffe-eau Paris 12 — pose, réparation, dépannage",
   description: `Installation et dépannage de chauffe-eau électrique (${SERVICE_AREA.phrase}) : Atlantic, Thermor, Ariston… Remplacement, entretien, fuite. Devis gratuit — 01 43 43 87 11.`,
   keywords: [

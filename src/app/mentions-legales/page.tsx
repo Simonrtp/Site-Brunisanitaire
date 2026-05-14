@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { COMPANY, CONTACT } from "@/lib/constants";
+import { siteIconsMetadata } from "@/lib/siteIcons";
 import { getAbsoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
+  icons: siteIconsMetadata,
   title: "Mentions légales",
   description: `Mentions légales du site ${COMPANY.name} — plombier Paris 12e.`,
   alternates: { canonical: getAbsoluteUrl("/mentions-legales") },

@@ -8,10 +8,15 @@ import {
 } from "@/lib/constants";
 import { stripFaqInlineBold } from "@/lib/faqAnswerRich";
 
-/** URL canonique du site (OG, JSON-LD, sitemap). Définir NEXT_PUBLIC_SITE_URL en production. */
+/** URL canonique du site (OG, JSON-LD, sitemap). Définir NEXT_PUBLIC_SITE_URL en production sur Vercel. */
 export function getSiteUrl(): string {
   const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if (raw) return raw.replace(/\/$/, "");
+  const vercel = process.env.VERCEL_URL?.trim();
+  if (vercel) {
+    const host = vercel.replace(/\/$/, "");
+    return host.startsWith("http") ? host : `https://${host}`;
+  }
   return "https://brunisanitaire.fr";
 }
 
