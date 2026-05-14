@@ -222,7 +222,7 @@ export default function TestimonialsCarousel() {
         viewport={viewportIn}
         transition={{ duration: 0.5, delay: 0.15 }}
       >
-        <div className="flex animate-marquee-mobile md:animate-marquee will-change-transform">
+        <div className="flex w-max animate-marquee-mobile md:animate-marquee will-change-transform">
           {reviews.map((r, i) => (
             <ReviewCard key={i} review={r} />
           ))}
