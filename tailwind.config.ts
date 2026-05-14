@@ -13,7 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       animation: {
-        marquee: "marquee-scroll 22s linear infinite",
+        marquee: "marquee-scroll 45s linear infinite",
       },
       keyframes: {
         "marquee-scroll": {
