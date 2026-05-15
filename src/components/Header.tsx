@@ -13,6 +13,9 @@ function isNavActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+const callButtonClass =
+  "inline-flex items-center justify-center gap-2.5 sm:gap-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold shadow-lg shadow-red-600/25 transition-all duration-200 hover:shadow-xl active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2";
+
 export default function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,9 +37,12 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="grid h-16 lg:h-20 w-full grid-cols-[auto,minmax(0,1fr),auto] items-center gap-2 sm:gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center flex-shrink-0 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 rounded-lg">
+          <Link
+            href="/"
+            className="flex items-center flex-shrink-0 py-1 justify-self-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 rounded-lg"
+          >
             <Image
               src={BRAND_ASSETS.logo}
               alt={BRAND_ASSETS.logoAlt}
@@ -47,65 +53,54 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {NAV_LINKS.map((link) => {
-              const active = isNavActive(pathname, link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  aria-current={active ? "page" : undefined}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 border-b-2 ${
-                    active
-                      ? "text-red-600 bg-red-50 border-red-600"
-                      : "text-gray-700 border-transparent hover:text-red-600 hover:bg-gray-50"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
+          {/* Centre : nav (desktop) ou bouton appel agrandi (mobile) */}
+          <div className="flex justify-center min-w-0">
+            <nav className="hidden lg:flex items-center justify-center gap-1 flex-wrap">
+              {NAV_LINKS.map((link) => {
+                const active = isNavActive(pathname, link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    aria-current={active ? "page" : undefined}
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 border-b-2 ${
+                      active
+                        ? "text-red-600 bg-red-50 border-red-600"
+                        : "text-gray-700 border-transparent hover:text-red-600 hover:bg-gray-50"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </nav>
 
-          {/* Phone CTA desktop — numéro affiché seul (non cliquable), appel via le bouton */}
-          <div className="hidden lg:flex items-center gap-4">
-            <span
-              className="text-right text-blue-900 font-bold text-lg -mt-1 block select-text cursor-default"
-              aria-label={`Numéro affiché : ${CONTACT.phoneDisplay}. Utilisez le bouton « Appeler maintenant » pour composer l’appel.`}
-            >
-              {CONTACT.phoneDisplay}
-            </span>
             <a
               href={CONTACT.phoneHref}
               aria-label={`Appeler Bruni Sanitaire au ${CONTACT.phoneDisplay}`}
-              className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-3 rounded-lg transition-all duration-200 hover:shadow-lg active:scale-95"
+              className={`${callButtonClass} lg:hidden px-5 py-3.5 text-sm sm:px-7 sm:py-4 sm:text-base max-w-[min(100%,280px)]`}
             >
-              <Phone className="h-4 w-4" />
-              <span>Appeler maintenant</span>
+              <Phone className="h-5 w-5 sm:h-6 sm:w-6 shrink-0" aria-hidden />
+              <span className="whitespace-nowrap">Appeler maintenant</span>
             </a>
           </div>
 
-          {/* Mobile : numéro visible (non cliquable) + bouton d’appel */}
-          <div className="flex items-center gap-2 min-[400px]:gap-3 lg:hidden">
-            <span
-              className="font-bold tabular-nums text-blue-900 text-xs min-[400px]:text-sm shrink-0 max-w-[9.5rem] min-[400px]:max-w-none truncate min-[400px]:truncate-none"
-              aria-label={`Numéro affiché : ${CONTACT.phoneDisplay}`}
-            >
-              {CONTACT.phoneDisplay}
-            </span>
+          {/* Droite : bouton desktop + menu mobile */}
+          <div className="flex items-center justify-end gap-2 justify-self-end">
             <a
               href={CONTACT.phoneHref}
-              aria-label={`Appeler le ${CONTACT.phoneDisplay}`}
-              className="flex shrink-0 items-center gap-2 bg-red-600 text-white font-bold px-3 py-2 rounded-lg text-sm"
+              aria-label={`Appeler Bruni Sanitaire au ${CONTACT.phoneDisplay}`}
+              className={`${callButtonClass} hidden lg:inline-flex px-8 py-4 text-base`}
             >
-              <Phone className="h-4 w-4" />
-              <span>Appeler</span>
+              <Phone className="h-5 w-5 shrink-0" aria-hidden />
+              <span>Appeler maintenant</span>
             </a>
             <button
+              type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg text-gray-700 hover:bg-gray-100"
-              aria-label="Menu"
+              className="lg:hidden p-2.5 rounded-xl text-gray-700 hover:bg-gray-100 transition-colors"
+              aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -141,14 +136,14 @@ export default function Header() {
                   </Link>
                 );
               })}
-              <div className="pt-3 border-t border-gray-100 space-y-3">
-                <p className="text-center text-blue-900 font-bold text-lg tabular-nums">{CONTACT.phoneDisplay}</p>
+              <div className="pt-3 border-t border-gray-100">
                 <a
                   href={CONTACT.phoneHref}
+                  onClick={() => setIsMenuOpen(false)}
                   aria-label={`Appeler le ${CONTACT.phoneDisplay}`}
-                  className="flex items-center justify-center gap-2 bg-red-600 text-white font-bold py-4 rounded-lg text-lg"
+                  className={`${callButtonClass} w-full py-4 text-lg`}
                 >
-                  <Phone className="h-5 w-5" />
+                  <Phone className="h-6 w-6 shrink-0" aria-hidden />
                   Appeler maintenant
                 </a>
               </div>
