@@ -78,10 +78,10 @@ export default function Header() {
             <a
               href={CONTACT.phoneHref}
               aria-label={`Appeler Bruni Sanitaire au ${CONTACT.phoneDisplay}`}
-              className={`${callButtonClass} lg:hidden px-5 py-3.5 text-sm sm:px-7 sm:py-4 sm:text-base max-w-[min(100%,280px)]`}
+              className={`${callButtonClass} lg:hidden gap-2 px-4 py-3 text-sm sm:px-5 sm:py-3.5 shrink min-w-0`}
             >
-              <Phone className="h-5 w-5 sm:h-6 sm:w-6 shrink-0" aria-hidden />
-              <span className="whitespace-nowrap">Appeler maintenant</span>
+              <Phone className="h-5 w-5 shrink-0" aria-hidden />
+              <span className="whitespace-nowrap">Appeler</span>
             </a>
           </div>
 
@@ -144,7 +144,7 @@ export default function Header() {
                   className={`${callButtonClass} w-full py-4 text-lg`}
                 >
                   <Phone className="h-6 w-6 shrink-0" aria-hidden />
-                  Appeler maintenant
+                  Appeler
                 </a>
               </div>
             </div>
